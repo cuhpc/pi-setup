@@ -1,3 +1,6 @@
+#!/bin/bash
+#PREREQ: init
+
 if [[ $# -lt 2 ]]; then
 	echo "Missing arguments"
 	echo "Usage:"
@@ -11,6 +14,7 @@ total_pi_nodes=$2
 #set hostname
 hostname=$(printf "pi%02d" $node_number)
 sed "/127.0.0.1/s/$/ $hostname/" /etc/hosts > /etc/hosts
+sudo hostname $hostname
 
 #add all nodes /etc/hosts
 for i in `seq 11 $(expr 10 + $total_pi_nodes)`; do

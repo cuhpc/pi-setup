@@ -1,6 +1,9 @@
+#!/bin/bash
+#PREREQ: init
+
 #install environmental modules software
 sudo yum install environment-modules -y
-echo "export MODULEPATH=\"/usr/share/Modules/modulefiles:/etc/modulefiles:/software/modulefiles\"" > /etc/profile.d/modulefiles.sh
+echo "export MODULEPATH=\"/usr/share/Modules/modulefiles:/etc/modulefiles:/software/modulefiles\"" | sudo tee /etc/profile.d/modulefiles.sh
 
 #setup folder structure to match Palmetto
 sudo mkdir /software/
@@ -13,7 +16,10 @@ sudo mkdir /software/modulefiles/openmpi
 sudo mkdir /software/openmpi
 sudo mkdir /software/modulefiles/gcc
 sudo mkdir /software/gcc
+sudo mkdir /software/modulefiles/git
+sudo mkdir /software/git
 
+#copy stock install into correct location
 sudo cp -r modules_assets/* /software/
 
 #make sure new folders have correct permissions
