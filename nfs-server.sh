@@ -9,6 +9,9 @@ printf "/mnt/netstorage          192.168.0.0/24(rw,sync)\n" | sudo tee -a /etc/e
 
 #set permissions on storage
 sudo chown nfsnobody:nfsnobody /mnt/netstorage/
+sudo chmod g+s /mnt/netstorage/
+sudo setfacl -d -m g::rwx /mnt/netstorage/
+sudo setfacl -d -m o::rx /mnt/netstorage/
 
 #enable and start service
 sudo systemctl enable nfs-server.service

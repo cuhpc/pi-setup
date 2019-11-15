@@ -15,4 +15,5 @@ echo $root_pw | passwd --stdin
 #expand filesystem
 action sudo rootfs-expand
 
-#expand partition
+#turn off firewall as we are in a secure network environment
+sudo systemctl disable firewalld && sudo systemctl stop firewalld
